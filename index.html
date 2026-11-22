@@ -1,43 +1,361 @@
-<!doctype html>
+
+<!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Observatoire des Zones Humides du Bénin — connaître, cartographier, valoriser et préserver les écosystèmes humides.">
-  <title>OZHB — Observatoire des Zones Humides du Bénin</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
-  <link rel="stylesheet" href="assets/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Observatoire des Zones Humides du Bénin : connaissance, cartographie, recherche et conservation des zones humides.">
+  <meta name="theme-color" content="#123f35">
+  <title>OZHB | Observatoire des Zones Humides du Bénin</title>
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-<header class="site-header">
-  <a class="brand" href="#accueil" aria-label="OZHB, accueil"><span class="brand-mark"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="29"/><path d="M7 39c12-3 17-13 26-13 9 0 14 10 24 7M8 46c13-4 17-10 26-10 9 0 15 8 22 5"/><path d="M31 8c-8 12-6 20 1 25 7-7 8-15-1-25Z"/><path d="M14 49c7-8 15-9 23-6 6 2 9 7 15 7"/></svg></span><span><strong>OZHB</strong><small>Observatoire des Zones Humides<br>du Bénin</small></span></a>
-  <button class="menu-toggle" aria-label="Ouvrir le menu" aria-expanded="false">☰</button>
-  <nav class="main-nav" aria-label="Navigation principale"><a class="active" href="#accueil">Accueil</a><a href="#zones">Zones humides</a><a href="#cartographie">Cartographie</a><a href="#publications">Publications</a><a href="#recherche">Recherche</a><a href="#biodiversite">Biodiversité</a><a href="#menaces">Menaces</a><a href="#apropos">À propos</a></nav>
-  <a class="header-contact" href="#contact">Nous contacter <span>↗</span></a>
-</header>
-<main>
-<section class="hero" id="accueil"><div class="hero-bg"></div><div class="hero-shade"></div><div class="hero-content wrap"><div class="eyebrow light"><span></span> OBSERVER · COMPRENDRE · PRÉSERVER</div><h1>Les zones humides du Bénin,<br><em>mieux connaître pour mieux préserver.</em></h1><p>Une plateforme scientifique et cartographique dédiée à la connaissance, à la recherche et à la valorisation des écosystèmes humides du Bénin.</p><div class="hero-actions"><a class="btn btn-gold" href="#zones">Explorer les zones humides <b>→</b></a><a class="btn btn-glass" href="#publications">Découvrir les publications</a></div></div><div class="hero-note"><b>OZHB</b><span>Une initiative scientifique<br>et cartographique</span></div><div class="hero-bottom"><span>RÉPUBLIQUE DU BÉNIN</span><span>01 / 04</span></div></section>
-<section class="stats wrap" aria-label="Repères du projet"><div class="stat"><span class="stat-icon">⌖</span><div><strong>À l'échelle nationale</strong><small>Zones humides du Bénin</small></div></div><div class="stat"><span class="stat-icon">⌁</span><div><strong>Cartographie & SIG</strong><small>Données et analyses spatiales</small></div></div><div class="stat"><span class="stat-icon">✳</span><div><strong>Biodiversité</strong><small>Espèces et écosystèmes</small></div></div><div class="stat"><span class="stat-icon">◉</span><div><strong>Connaissance partagée</strong><small>Recherche et documentation</small></div></div></section>
-<section class="section wrap" id="explorer"><div class="section-heading"><div><div class="eyebrow">EXPLORER L'OBSERVATOIRE</div><h2>La connaissance au service<br>des milieux humides.</h2></div><p>Découvrez les ressources de l'observatoire et explorez les grandes thématiques liées aux zones humides béninoises.</p></div><div class="feature-grid">
-<a class="feature-card" href="#cartographie"><span class="feature-icon green">▧</span><h3>Cartographie</h3><p>Cartes et analyses spatiales des écosystèmes humides.</p><span class="card-arrow">↗</span></a>
-<a class="feature-card" href="#publications"><span class="feature-icon blue">▤</span><h3>Publications</h3><p>Articles, mémoires, thèses et rapports scientifiques.</p><span class="card-arrow">↗</span></a>
-<a class="feature-card" href="#biodiversite"><span class="feature-icon lime">❋</span><h3>Biodiversité</h3><p>Espèces végétales, animales et habitats aquatiques.</p><span class="card-arrow">↗</span></a>
-<a class="feature-card" href="#recherche"><span class="feature-icon orange">⌕</span><h3>Recherche</h3><p>Études, projets et initiatives scientifiques.</p><span class="card-arrow">↗</span></a>
-<a class="feature-card" href="#menaces"><span class="feature-icon red">!</span><h3>Menaces</h3><p>Pressions, vulnérabilités et risques environnementaux.</p><span class="card-arrow">↗</span></a>
-<a class="feature-card" href="#conservation"><span class="feature-icon forest">♧</span><h3>Conservation</h3><p>Agir pour la restauration et la gestion durable.</p><span class="card-arrow">↗</span></a>
-</div></section>
-<section class="section map-section" id="cartographie"><div class="wrap"><div class="section-heading"><div><div class="eyebrow">GÉOMATIQUE & TERRITOIRES</div><h2>Explorer la carte<br><span class="green-text">des zones humides.</span></h2></div><p>Une première vue cartographique pour situer quelques grands milieux humides du Bénin. Les localisations affichées sont indicatives et devront être vérifiées avant publication.</p></div><div class="map-layout"><div class="map-panel"><div class="map-toolbar"><div><span class="live-dot"></span> CARTE EXPLORATOIRE</div><button id="reset-map">Réinitialiser ↺</button></div><div id="map" role="application" aria-label="Carte interactive des zones humides du Bénin"></div><div class="map-legend"><span><i class="legend-dot"></i> Site humide indicatif</span><span><i class="legend-line"></i> Limites / hydrographie à intégrer</span></div></div><aside class="map-aside"><div class="aside-kicker">SÉLECTION DE SITES</div><h3>Quelques milieux à découvrir</h3><p class="muted">Sélectionnez un site pour le localiser sur la carte.</p><div id="site-list" class="site-list"></div><div class="notice"><b>À noter</b><p>Les points et fiches de cette maquette sont des repères de démonstration. Les coordonnées, limites et données détaillées restent à documenter et à valider.</p></div></aside></div></div></section>
-<section class="section wrap" id="zones"><div class="section-heading"><div><div class="eyebrow">PATRIMOINE NATUREL</div><h2>Les zones humides<br>du Bénin.</h2></div><p>Retrouvez progressivement les fiches descriptives des lacs, lagunes, vallées, plaines inondables et autres écosystèmes humides.</p></div><div class="filters"><label class="searchbox"><span>⌕</span><input id="zone-search" type="search" placeholder="Rechercher un site, une commune…"></label><select id="dept-filter" aria-label="Filtrer par département"><option value="">Tous les départements</option><option>Littoral</option><option>Atlantique</option><option>Ouémé</option><option>Mono</option></select></div><div class="zone-grid" id="zone-grid"></div><div class="center-action"><button class="btn btn-outline" id="show-all">Afficher les sites <span>→</span></button></div></section>
-<section class="section publication-section" id="publications"><div class="wrap"><div class="section-heading"><div><div class="eyebrow">RESSOURCES DOCUMENTAIRES</div><h2>La science en<br><span class="green-text">partage.</span></h2></div><p>Un espace de valorisation des travaux scientifiques consacrés aux zones humides, à leurs usages et à leur conservation.</p></div><div class="publication-layout"><div class="publication-list" id="publication-list"></div><aside class="library-card"><div class="library-art"> <span>OZHB</span><b>Bibliothèque<br>scientifique</b><small>DOCUMENTATION · RECHERCHE · SAVOIR</small></div><div class="library-body"><div class="eyebrow">CENTRE DE RESSOURCES</div><h3>Une bibliothèque à construire ensemble.</h3><p>Articles, mémoires, thèses, rapports et guides seront référencés au fur et à mesure de leur collecte et de la vérification des droits de diffusion.</p><a href="#contact" class="text-link">Proposer un document <span>→</span></a></div></aside></div></div></section>
-<section class="section wrap" id="recherche"><div class="section-heading"><div><div class="eyebrow">PRODUCTION DE CONNAISSANCES</div><h2>Explorer les pistes<br>de recherche.</h2></div><p>Des thématiques transversales pour mieux comprendre les dynamiques écologiques, hydrologiques et territoriales.</p></div><div class="research-grid"><article class="research-card"><span>01 / GÉOMATIQUE</span><h3>Télédétection & cartographie</h3><p>Occupation du sol, évolution des milieux et analyses spatiales.</p></article><article class="research-card"><span>02 / ENVIRONNEMENT</span><h3>Vulnérabilité & pressions</h3><p>Pollution, urbanisation, érosion et risques d'inondation.</p></article><article class="research-card"><span>03 / ÉCOLOGIE</span><h3>Biodiversité aquatique</h3><p>Habitats, espèces, végétation et fonctionnement des écosystèmes.</p></article><article class="research-card"><span>04 / GESTION</span><h3>Restauration & résilience</h3><p>Gestion intégrée de l'eau et adaptation aux changements climatiques.</p></article></div></section>
-<section class="section bio-section" id="biodiversite"><div class="wrap bio-layout"><div><div class="eyebrow light">VIVANT & ÉCOSYSTÈMES</div><h2>Une biodiversité<br>à mieux connaître.</h2><p>Les zones humides abritent une diversité de plantes, de poissons, d'oiseaux et d'autres organismes. L'observatoire a vocation à documenter ces espèces à partir de sources fiables et d'observations vérifiées.</p><a class="btn btn-light" href="#contact">Contribuer à l'inventaire <span>→</span></a></div><div class="bio-visual"><div class="bio-photo"></div><div class="photo-caption"><span>BIODIVERSITÉ DES MILIEUX HUMIDES</span><b>Observer pour préserver.</b></div></div></div></section>
-<section class="section wrap" id="menaces"><div class="section-heading"><div><div class="eyebrow">COMPRENDRE LES PRESSIONS</div><h2>Des milieux fragiles,<br>des enjeux majeurs.</h2></div><p>Documenter les pressions est une étape essentielle pour éclairer les actions de gestion et de conservation.</p></div><div class="threat-grid"><article><span class="threat-number">01</span><h3>Pollution des eaux</h3><p>Déchets solides, rejets et altération de la qualité de l'eau.</p></article><article><span class="threat-number">02</span><h3>Occupation des berges</h3><p>Remblaiement, urbanisation et transformation des habitats.</p></article><article><span class="threat-number">03</span><h3>Dégradation écologique</h3><p>Perte de végétation, surexploitation et espèces envahissantes.</p></article><article><span class="threat-number">04</span><h3>Aléas climatiques</h3><p>Inondations, érosion et évolution des régimes hydrologiques.</p></article></div></section>
-<section class="conservation-band" id="conservation"><div class="wrap conservation-inner"><div><div class="eyebrow light">AGIR POUR L'AVENIR</div><h2>Préserver les zones humides,<br>c'est préserver la vie.</h2></div><p>La connaissance, le partage des données et la mobilisation des acteurs peuvent contribuer à une gestion durable des écosystèmes humides.</p><a class="btn btn-gold" href="#contact">Participer à la démarche <span>→</span></a></div></section>
-<section class="section about-section" id="apropos"><div class="wrap about-layout"><div><div class="eyebrow">À PROPOS DE L'OBSERVATOIRE</div><h2>Une initiative dédiée<br>aux zones humides<br>du Bénin.</h2></div><div class="about-copy"><p class="lead">L'Observatoire des Zones Humides du Bénin (OZHB) est une initiative scientifique et cartographique consacrée à la connaissance, à l'étude, au suivi et à la valorisation des écosystèmes humides du territoire national.</p><p>À travers la géomatique, la cartographie, la télédétection et la recherche environnementale, l'OZHB ambitionne de favoriser la production, la centralisation et la diffusion des connaissances relatives aux zones humides.</p><div class="project-owner"><span class="owner-avatar">HE</span><div><b>HONFO Elfried Elisée</b><small>Porteur de l'initiative OZHB</small></div></div><p class="disclaimer">L'OZHB est présenté ici comme une initiative personnelle. Cette maquette ne revendique aucun statut institutionnel, agrément ou partenariat officiel.</p></div></div></section>
-<section class="contact-section" id="contact"><div class="wrap contact-layout"><div><div class="eyebrow light">ÉCHANGEONS NOS CONNAISSANCES</div><h2>Une information,<br>une observation,<br>une contribution ?</h2><p>Vous souhaitez proposer une publication, partager une observation de terrain ou signaler une information sur une zone humide ? Écrivez-nous.</p><div class="contact-meta"><span>✉</span> Coordonnées de contact à compléter</div></div><form id="contact-form" class="contact-form"><label>Votre nom<input required name="name" placeholder="Nom et prénom"></label><label>Adresse e-mail<input required type="email" name="email" placeholder="vous@exemple.com"></label><label>Objet<select name="subject"><option>Question générale</option><option>Proposer une publication</option><option>Signaler une observation</option><option>Proposer une zone humide</option></select></label><label>Votre message<textarea required name="message" rows="4" placeholder="Écrivez votre message…"></textarea></label><button class="btn btn-gold" type="submit">Préparer mon message <span>→</span></button><p class="form-hint" id="form-hint">Formulaire de démonstration : aucun message n'est envoyé sans service backend.</p></form></div></section>
-</main>
-<footer class="footer"><div class="wrap footer-top"><a class="brand footer-brand" href="#accueil"><span class="brand-mark"><svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="29"/><path d="M7 39c12-3 17-13 26-13 9 0 14 10 24 7M8 46c13-4 17-10 26-10 9 0 15 8 22 5"/><path d="M31 8c-8 12-6 20 1 25 7-7 8-15-1-25Z"/></svg></span><span><strong>OZHB</strong><small>Observatoire des Zones Humides<br>du Bénin</small></span></a><p>Connaître, cartographier, valoriser<br>et préserver les zones humides du Bénin.</p><div class="footer-links"><a href="#zones">Zones humides</a><a href="#cartographie">Cartographie</a><a href="#publications">Publications</a><a href="#apropos">À propos</a></div></div><div class="wrap footer-bottom"><span>© <span id="year"></span> OZHB — Maquette frontend</span><span>République du Bénin · Tous droits réservés</span><a href="#accueil">Retour en haut ↑</a></div></footer>
-<div class="modal" id="zone-modal" aria-hidden="true"><div class="modal-backdrop" data-close></div><div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modal-title"><button class="modal-close" data-close aria-label="Fermer">×</button><div class="eyebrow">FICHE DE SITE · DONNÉES À VALIDER</div><h2 id="modal-title"></h2><span class="tag" id="modal-dept"></span><p id="modal-desc"></p><div class="modal-note">Fiche de démonstration — les données détaillées sont en cours de documentation.</div><button class="btn btn-outline" data-close>Fermer</button></div></div>
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script><script src="assets/app.js"></script>
-</body></html>
+
+  <!-- EN-TÊTE -->
+  <header class="site-header">
+    <a href="#accueil" class="brand">
+      <span class="brand-symbol">OZHB</span>
+      <span class="brand-text">
+        <strong>Observatoire des Zones Humides</strong>
+        <small>RÉPUBLIQUE DU BÉNIN</small>
+      </span>
+    </a>
+
+    <nav class="main-nav" aria-label="Navigation principale">
+      <a href="#accueil">Accueil</a>
+      <a href="#zones">Zones humides</a>
+      <a href="#cartographie">Cartographie</a>
+      <a href="#publications">Publications</a>
+      <a href="#recherche">Recherche</a>
+      <a href="#biodiversite">Biodiversité</a>
+      <a href="#menaces">Menaces</a>
+      <a href="#apropos">À propos</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- 1. ACCUEIL -->
+    <section class="hero" id="accueil">
+      <div class="hero-content">
+        <span class="eyebrow">CONNAÎTRE · CARTOGRAPHIER · PROTÉGER</span>
+        <h1>Observatoire des Zones Humides du Bénin</h1>
+        <p>
+          Un espace de connaissance, de recherche et de valorisation
+          des écosystèmes humides du Bénin.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#zones">Explorer les zones humides</a>
+          <a class="btn btn-outline" href="#apropos">Découvrir l'observatoire</a>
+        </div>
+      </div>
+      <div class="hero-image image-placeholder">
+        <span>Emplacement de la photographie principale</span>
+        <small>Ajouter une photographie personnelle du Bénin</small>
+      </div>
+    </section>
+
+    <!-- INTRODUCTION -->
+    <section class="intro section-container">
+      <div>
+        <span class="eyebrow">NOTRE MISSION</span>
+        <h2>Observer pour mieux préserver</h2>
+      </div>
+      <p>
+        Les zones humides jouent un rôle important dans le fonctionnement
+        des écosystèmes, la disponibilité de l'eau, la biodiversité et les
+        activités des populations. L'OZHB ambitionne de rassembler et de
+        rendre accessibles des informations documentées sur ces milieux
+        au Bénin.
+      </p>
+    </section>
+
+    <!-- 2. ZONES HUMIDES -->
+    <section class="section section-container" id="zones">
+      <div class="section-heading">
+        <span class="eyebrow">PATRIMOINE ÉCOLOGIQUE</span>
+        <h2>Les zones humides du Bénin</h2>
+        <p>
+          Découvrez les sites Ramsar et les autres complexes écologiques
+          humides du territoire béninois.
+        </p>
+      </div>
+
+      <h3 class="subheading">Les quatre sites Ramsar du Bénin</h3>
+
+      <div class="cards-grid">
+        <article class="info-card">
+          <div class="card-image image-placeholder">Photographie du site</div>
+          <div class="card-content">
+            <span class="tag">Site Ramsar 1017</span>
+            <h3>Basse vallée du Couffo</h3>
+            <p>
+              Basse vallée du Couffo, lagune côtière, chenal Aho et lac Ahémé.
+            </p>
+            <a href="#apropos" class="text-link">En savoir plus</a>
+          </div>
+        </article>
+
+        <article class="info-card">
+          <div class="card-image image-placeholder">Photographie du site</div>
+          <div class="card-content">
+            <span class="tag">Site Ramsar 1018</span>
+            <h3>Basse vallée de l'Ouémé</h3>
+            <p>
+              Basse vallée de l'Ouémé, lagune de Porto-Novo et lac Nokoué.
+            </p>
+            <a href="#apropos" class="text-link">En savoir plus</a>
+          </div>
+        </article>
+
+        <article class="info-card">
+          <div class="card-image image-placeholder">Photographie du site</div>
+          <div class="card-content">
+            <span class="tag">Site Ramsar 1668</span>
+            <h3>Complexe W</h3>
+            <p>
+              Un complexe écologique transfrontalier à documenter
+              à partir de sources scientifiques et institutionnelles.
+            </p>
+            <a href="#apropos" class="text-link">En savoir plus</a>
+          </div>
+        </article>
+
+        <article class="info-card">
+          <div class="card-image image-placeholder">Photographie du site</div>
+          <div class="card-content">
+            <span class="tag">Site Ramsar 1669</span>
+            <h3>Rivière Pendjari</h3>
+            <p>
+              Zone humide de la rivière Pendjari, au nord-ouest du Bénin.
+            </p>
+            <a href="#apropos" class="text-link">En savoir plus</a>
+          </div>
+        </article>
+      </div>
+
+      <div class="notice">
+        <strong>Note documentaire :</strong>
+        les superficies, dates de désignation, limites géographiques,
+        espèces et statuts de conservation seront renseignés après
+        vérification des fiches officielles et des références scientifiques.
+      </div>
+    </section>
+
+    <!-- 3. CARTOGRAPHIE -->
+    <section class="section section-alt" id="cartographie">
+      <div class="section-container">
+        <div class="section-heading">
+          <span class="eyebrow">INFORMATION GÉOGRAPHIQUE</span>
+          <h2>Cartographie des zones humides</h2>
+          <p>
+            Visualiser la répartition géographique des écosystèmes humides
+            et consulter les informations spatiales disponibles.
+          </p>
+        </div>
+
+        <div class="map-placeholder">
+          <div class="map-placeholder-content">
+            <span class="map-icon">⌖</span>
+            <h3>Carte interactive du Bénin</h3>
+            <p>
+              L'espace accueillera la carte des sites Ramsar, des cours
+              d'eau, des lacs, des lagunes et des autres zones humides.
+            </p>
+            <small>Carte à intégrer ultérieurement (par exemple avec Leaflet).</small>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. PUBLICATIONS -->
+    <section class="section section-container" id="publications">
+      <div class="section-heading">
+        <span class="eyebrow">DOCUMENTATION</span>
+        <h2>Publications et ressources</h2>
+        <p>
+          Un espace destiné aux rapports, articles scientifiques,
+          études, cartes et documents institutionnels.
+        </p>
+      </div>
+
+      <div class="empty-state">
+        <span class="empty-icon">▤</span>
+        <h3>Bibliothèque documentaire</h3>
+        <p>
+          Les publications vérifiées seront ajoutées ici avec leur auteur,
+          leur date, leur source et un lien de consultation ou de téléchargement.
+        </p>
+      </div>
+    </section>
+
+    <!-- 5. RECHERCHE -->
+    <section class="section section-alt" id="recherche">
+      <div class="section-container">
+        <div class="section-heading">
+          <span class="eyebrow">CONNAISSANCE SCIENTIFIQUE</span>
+          <h2>Recherche et études</h2>
+          <p>
+            Encourager la production et le partage de connaissances
+            sur les zones humides béninoises.
+          </p>
+        </div>
+
+        <div class="cards-grid three-columns">
+          <article class="simple-card">
+            <span class="simple-icon">⌕</span>
+            <h3>Études écologiques</h3>
+            <p>Caractérisation des habitats, de la végétation et des milieux aquatiques.</p>
+          </article>
+          <article class="simple-card">
+            <span class="simple-icon">◎</span>
+            <h3>Géomatique et télédétection</h3>
+            <p>Cartographie, suivi spatial et analyse de l'évolution des milieux.</p>
+          </article>
+          <article class="simple-card">
+            <span class="simple-icon">⌁</span>
+            <h3>Suivi environnemental</h3>
+            <p>Documentation des pressions et des changements écologiques.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. BIODIVERSITÉ -->
+    <section class="section section-container" id="biodiversite">
+      <div class="section-heading">
+        <span class="eyebrow">RICHESSE NATURELLE</span>
+        <h2>Biodiversité des zones humides</h2>
+        <p>
+          Présentation de la faune, de la flore et des habitats associés
+          aux écosystèmes humides du Bénin.
+        </p>
+      </div>
+
+      <div class="biodiversity-grid">
+        <div class="biodiversity-item">
+          <div class="biodiversity-image image-placeholder">Photo de la faune</div>
+          <h3>Faune</h3>
+          <p>Oiseaux, poissons, reptiles, mammifères et autres espèces.</p>
+        </div>
+        <div class="biodiversity-item">
+          <div class="biodiversity-image image-placeholder">Photo de la flore</div>
+          <h3>Flore</h3>
+          <p>Végétation aquatique, formations marécageuses et mangroves.</p>
+        </div>
+        <div class="biodiversity-item">
+          <div class="biodiversity-image image-placeholder">Photo d'un habitat</div>
+          <h3>Habitats</h3>
+          <p>Lacs, lagunes, plaines inondables, marais et cours d'eau.</p>
+        </div>
+      </div>
+      <p class="small-note">
+        Les noms scientifiques et statuts de conservation seront associés
+        à leurs références et à la date de consultation.
+      </p>
+    </section>
+
+    <!-- 7. MENACES -->
+    <section class="section section-dark" id="menaces">
+      <div class="section-container">
+        <div class="section-heading">
+          <span class="eyebrow">ENJEUX ENVIRONNEMENTAUX</span>
+          <h2>Menaces et conservation</h2>
+          <p>
+            Documenter les pressions exercées sur les zones humides
+            et les initiatives visant à préserver leurs fonctions écologiques.
+          </p>
+        </div>
+
+        <div class="cards-grid three-columns">
+          <article class="threat-card">
+            <span class="threat-number">01</span>
+            <h3>Pressions humaines</h3>
+            <p>
+              Activités agricoles, pêche, urbanisation, exploitation des
+              ressources naturelles et occupation des berges.
+            </p>
+          </article>
+          <article class="threat-card">
+            <span class="threat-number">02</span>
+            <h3>Dégradations écologiques</h3>
+            <p>
+              Perturbation des habitats, pollution, modification des
+              écoulements et perte de végétation.
+            </p>
+          </article>
+          <article class="threat-card">
+            <span class="threat-number">03</span>
+            <h3>Actions de conservation</h3>
+            <p>
+              Restauration, sensibilisation, suivi écologique et gestion
+              durable des ressources.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. À PROPOS -->
+    <section class="section section-container" id="apropos">
+      <div class="about-layout">
+        <div>
+          <span class="eyebrow">À PROPOS DE L'OBSERVATOIRE</span>
+          <h2>Une plateforme dédiée aux zones humides du Bénin</h2>
+          <p>
+            L'Observatoire des Zones Humides du Bénin (OZHB) est conçu
+            comme un espace de centralisation et de valorisation des
+            informations relatives aux milieux humides du pays.
+          </p>
+          <p>
+            Il vise à faciliter l'accès aux données géographiques,
+            écologiques et scientifiques, ainsi qu'aux ressources utiles
+            à la connaissance et à la conservation de ces écosystèmes.
+          </p>
+        </div>
+
+        <div class="about-panel">
+          <span class="about-mark">OZHB</span>
+          <h3>Observer · Comprendre · Préserver</h3>
+          <p>Une meilleure connaissance pour une gestion durable.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- PIED DE PAGE -->
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div>
+        <strong>OZHB</strong>
+        <p>Observatoire des Zones Humides du Bénin</p>
+      </div>
+      <div class="footer-links">
+        <a href="#accueil">Accueil</a>
+        <a href="#zones">Zones humides</a>
+        <a href="#apropos">À propos</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© <span id="current-year">2026</span> OZHB. Tous droits réservés.</p>
+      <p>Photographies : HONFO Elfried Elisée (2026)</p>
+    </div>
+  </footer>
+
+  <!-- BOUTON WHATSAPP -->
+  <a
+    class="whatsapp-button"
+    href="https://wa.me/2290166671303"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Contacter l'OZHB sur WhatsApp"
+    title="Contacter sur WhatsApp"
+  >
+    <span aria-hidden="true">✆</span>
+  </a>
+
+  <script src="script.js"></script>
+</body>
+</html>
