@@ -24,6 +24,6 @@ Maquette frontend responsive de l'Observatoire des Zones Humides du Bénin.
 Ceci est uniquement le frontend. Il n'y a pas de backend, base de données, authentification, espace administrateur, téléversement de fichiers ni envoi réel de formulaires. Les sites, points cartographiques et publications sont des exemples de présentation ; leurs coordonnées et contenus doivent être vérifiés et validés avant publication. La carte et les polices distantes nécessitent une connexion internet.
 
 ## Personnalisation
-- Styles : `assets/style.css`
-- Interactions et données de démonstration : `assets/app.js`
+- Styles : `style.css`
+- Interactions et données de démonstration : `script.js`
 - Structure des pages : `index.html`
