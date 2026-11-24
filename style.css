@@ -126,3 +126,21 @@ img{display:block;max-width:100%}
 .tabpanel ul{padding-left:20px;display:grid;gap:4px}
 .srcs{margin-top:14px;font-size:13px}.srcs a{color:var(--aqua);text-decoration:underline}
 @media(max-width:700px){.bio{grid-template-columns:1fr}.bio img{width:180px;margin:auto;position:static}}
+
+.pagehead{background:linear-gradient(90deg,var(--forest),var(--eco));color:#fff;padding:34px 0}
+.pagehead h1{font:700 clamp(24px,3.5vw,36px)/1.2 Merriweather,Georgia,serif}
+.pagebody{padding:28px 0 50px;display:grid;gap:22px}
+.main-nav a[aria-current]{background:var(--eco);color:#fff}
+.block{border-radius:12px;padding:22px 26px}
+.block h2{display:flex;align-items:center;gap:12px;font-size:20px;margin-bottom:12px;text-transform:uppercase}
+.block h2 i{font-style:normal;font-size:22px}
+.block h3{color:var(--forest);font-size:15px;margin:16px 0 6px}
+.block ul{padding-left:22px;display:grid;gap:5px;font-size:17px}
+.b-green,.b-leaf{background:#e8f3ec}.b-red{background:#fde9e9}.b-blue{background:#e6eef8}
+.bigmap{height:460px;border-radius:12px;border:1px solid #dfe6df}
+.pubs.big{background:#fff;border:1px solid #dfe6df;border-radius:10px}.pubs.big img{width:130px;height:90px}
+.more{text-align:center;margin-top:22px}
+.bio{padding:0}.bio .contact{margin-top:16px}
+#grid.grid{grid-template-columns:repeat(4,1fr)}
+@media(max-width:1100px){#grid.grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:700px){.bigmap{height:340px}.pagebody{padding-top:20px}}

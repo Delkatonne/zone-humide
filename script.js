@@ -6,11 +6,14 @@ const ZONES = [
   { n: "Rivière Pendjari", r: "1669", d: "Atacora", t: "Zone humide de la rivière Pendjari", a: "483 366 ha", i: "144 774 ha (étendu en 2018)", img: "pendjari.jpg", ll: [11.1444, 1.5547] }
 ];
 const RAMSAR = r => "https://rsis.ramsar.org/ris/" + r;
-const $ = s => document.querySelector(s);
+const NUL = { addEventListener() {}, setAttribute() {}, insertAdjacentHTML() {}, classList: { toggle() {}, remove() {} }, value: "", set innerHTML(v) {}, set textContent(v) {} };
+const $ = s => document.querySelector(s) || NUL;
+const P = new URLSearchParams(location.search), QZ = P.get("z");
 const norm = s => s.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 const deps = [...new Set(ZONES.flatMap(z => z.d.split(" / ")))].sort();
 deps.forEach(d => $("#dep").insertAdjacentHTML("beforeend", `<option>${d}</option>`));
 
+if (P.get("q")) { $("#q").value = P.get("q"); }
 function render() {
   const q = norm($("#q").value), dep = $("#dep").value;
   const list = ZONES.filter(z => (!dep || z.d.includes(dep)) && norm(z.n + " " + z.d).includes(q));
@@ -19,29 +22,23 @@ function render() {
       <img src="images/${z.img}" alt="${z.n}" loading="lazy">
       <div><span class="tag">Site Ramsar ${z.r}</span><h3>${z.n}</h3><p class="dep">${z.d}</p>
       <p class="area">Superficie actuelle (Ramsar) : <b>${z.a}</b><br><small>Initiale : ${z.i}</small></p><p class="todo">Espèces et statuts UICN : en cours de documentation</p>
-      <div class="acts"><button class="btn btn-gold" data-i="${ZONES.indexOf(z)}">Voir sur la carte</button><a class="btn btn-ghost" href="#menaces" data-t="${ZONES.indexOf(z)}">Menaces</a></div></div>
+      <div class="acts"><a class="btn btn-gold" href="cartographie.html?z=${ZONES.indexOf(z)}">Voir sur la carte</a><a class="btn btn-ghost" href="menaces.html?z=${ZONES.indexOf(z)}">Menaces</a></div></div>
     </article>`).join("") || "<p class='todo'>Aucun site ne correspond à cette recherche.</p>";
 }
 $("#q").addEventListener("input", render);
 $("#dep").addEventListener("change", render);
-$("#head-q").addEventListener("input", e => { $("#q").value = e.target.value; render(); });
-$(".head-search").addEventListener("submit", e => { e.preventDefault(); $("#zones").scrollIntoView({ behavior: "smooth" }); });
+$(".head-search").addEventListener("submit", e => { e.preventDefault(); location.href = "zones.html?q=" + encodeURIComponent($("#head-q").value); });
 render();
 
 // Carte Leaflet (nécessite une connexion internet pour les tuiles)
 let map;
-if (window.L) {
+if (window.L && document.getElementById("map")) {
   map = L.map("map", { scrollWheelZoom: false }).setView([9.5, 2.3], 6);
+  if (QZ !== null && ZONES[QZ]) map.setView(ZONES[QZ].ll, 9);
   L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", { maxZoom: 18, attribution: "© OpenStreetMap" }).addTo(map);
   ZONES.forEach(z => L.circleMarker(z.ll, { radius: 9, color: "#123D35", fillColor: "#16845A", fillOpacity: .9 })
     .addTo(map).bindPopup(`<b>${z.n}</b><br>Site Ramsar ${z.r}<br><small>Position indicative</small>`));
 }
-$("#cards").addEventListener("click", e => {
-  const b = e.target.closest("button[data-i]"); if (!b || !map) return;
-  const z = ZONES[b.dataset.i];
-  $("#cartographie").scrollIntoView({ behavior: "smooth" });
-  map.flyTo(z.ll, 10);
-});
 
 // Menu mobile
 const mb = $(".menu-btn"), nav = $("#nav");
@@ -51,10 +48,11 @@ $("#year").textContent = new Date().getFullYear();
 
 // Galerie : légendes provisoires, d'après les noms des fichiers
 const PHOTOS = [
-  ["hero.jpg", "Ouidah"], ["aheme.jpg", "Lac Ahémé"], ["nokoue.jpg", "Lac Nokoué"], ["oueme.jpg", "Basse vallée de l'Ouémé"],
-  ["bonou.jpg", "Bonou"], ["aguegue.jpg", "Aguégué"], ["couffo.jpg", "Le fleuve Couffo"], ["adjarra.jpg", "Rivière noire d'Adjarra"],
-  ["curage-canaux.jpg", "Curage de canaux"], ["parc-w.jpg", "Parc national W"], ["pendjari.jpg", "Pendjari"],
-  ["pendjari-fleuve.jpg", "Rivière Pendjari"], ["tanougou.jpg", "Cascades de Tanougou"]
+  ["hero.jpg", "Ouidah"], ["ouidah-cours-eau.jpg", "Ouidah, cours d'eau"], ["aheme.jpg", "Lac Ahémé"], ["nokoue.jpg", "Lac Nokoué"], ["oueme.jpg", "Basse vallée de l'Ouémé"],
+  ["bonou.jpg", "Bonou"], ["aguegue.jpg", "Aguégué, pêcheurs"], ["aguegue-2.jpg", "Aguégué, mangrove (2)"], ["aguegue-3.jpg", "Aguégué, mangrove (3)"], ["aguegue-4.jpg", "Aguégué, mangrove (4)"],
+  ["aguegue-5.jpg", "Aguégué, berge (5)"], ["aguegue-6.jpg", "Aguégué, plan d'eau (6)"], ["aguegue-7.jpg", "Aguégué, végétation (7)"], ["adjohoun-1.jpg", "Adjohoun (1)"], ["adjohoun-2.jpg", "Adjohoun (2)"],
+  ["adjohoun-3.jpg", "Adjohoun (3)"], ["adjohoun-4.jpg", "Adjohoun (4)"], ["kpomasse.jpg", "Kpomassè"], ["couffo.jpg", "Le fleuve Couffo"], ["adjarra.jpg", "Rivière noire d'Adjarra"],
+  ["curage-canaux.jpg", "Curage de canaux"], ["parc-w.jpg", "Parc national W"], ["pendjari.jpg", "Pendjari"], ["pendjari-fleuve.jpg", "Rivière Pendjari"], ["tanougou.jpg", "Cascades de Tanougou"]
 ];
 $("#grid").innerHTML = PHOTOS.map(([f, c]) =>
   `<figure><a href="images/${f}" target="_blank" rel="noopener"><img src="images/${f}" alt="${c}" loading="lazy"></a><figcaption>${c}</figcaption></figure>`).join("");
@@ -79,5 +77,4 @@ function showThreats(i) {
 }
 $("#tabs").innerHTML = ZONES.map((z, i) => `<button role="tab" data-i="${i}">${z.n}</button>`).join("");
 $("#tabs").addEventListener("click", e => { const b = e.target.closest("button"); if (b) showThreats(b.dataset.i); });
-$("#cards").addEventListener("click", e => { const a = e.target.closest("[data-t]"); if (a) showThreats(a.dataset.t); });
-showThreats(0);
+showThreats(ZONES[QZ] ? QZ : 0);

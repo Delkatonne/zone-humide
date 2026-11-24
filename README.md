@@ -27,3 +27,6 @@ Ceci est uniquement le frontend. Il n'y a pas de backend, base de données, auth
 - Styles : `style.css`
 - Interactions et données de démonstration : `script.js`
 - Structure des pages : `index.html`
+
+## Pages
+index, zones, cartographie, publications, galerie, recherche, biodiversite, menaces, conservation, biographie. Contenus des zones et menaces : `script.js` (ZONES, THREATS). Photos : `images/` (ajouter une photo = l'ajouter à la liste PHOTOS dans `script.js`).
